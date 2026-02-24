@@ -21,7 +21,7 @@ pipeline {
                         doGenerateSubmoduleConfigurations: false,
                         extensions: [],
                         userRemoteConfigs: [[
-                            credentialsId: 'secunity',
+                            credentialsId: 'itayv',
                             url: 'git@github.com:secunity/configuration_management.git'
                              ]]
                     ])
@@ -56,5 +56,6 @@ pipeline {
             echo "❌ Pipeline failed for branch: ${params.BRANCH}"
         }
     }
+
 
 }
