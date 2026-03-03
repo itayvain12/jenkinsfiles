@@ -15,7 +15,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 script {                   
-                    echo "Checking out branch: 'master'"
+                    echo "Checking out branch: 'main'"
                     checkout([$class: 'GitSCM',
                         branches: [[name: "main"]],
                         doGenerateSubmoduleConfigurations: false,
@@ -59,6 +59,7 @@ pipeline {
 
 
 }
+
 
 
 
