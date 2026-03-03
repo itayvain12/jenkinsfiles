@@ -17,7 +17,7 @@ pipeline {
                 script {                   
                     echo "Checking out branch: 'master'"
                     checkout([$class: 'GitSCM',
-                        branches: [[name: "Torik-playbook"]],
+                        branches: [[name: "main"]],
                         doGenerateSubmoduleConfigurations: false,
                         extensions: [],
                         userRemoteConfigs: [[
@@ -59,5 +59,6 @@ pipeline {
 
 
 }
+
 
 
