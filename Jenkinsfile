@@ -22,7 +22,7 @@ pipeline {
                         extensions: [],
                         userRemoteConfigs: [[
                             credentialsId: 'itayv',
-                            url: 'git@github.com:secunity/configuration_management.git'
+                            url: 'https://github.com/itayvain12/playbooks.git'
                              ]]
                     ])
 
@@ -36,10 +36,10 @@ pipeline {
                 script {
                     if (params.DRY_RUN) {
                         echo "Running Ansible playbook in dry-run mode (--check)..."
-                        sh """ansible-playbook ansible/playbooks/torik.yaml -i ansible/inventory.yaml --check -e "host=torik-lab clickhouse_server=${params.CLICKHOUSE_SERVER} clickhouse_password=${params.CLICKHOUSE_PASSWORD} mongodb_server=${params.MONGODB_SERVER} mongodb_password=${params.MONGODB_PASSWORD} mpop_mongodb_server=${params.MPOP_MONGODB_SERVER} mpop_mongodb_password=${params.MPOP_MONGODB_PASSWORD} branch=${params.BRANCH}" """
+                        sh """ansible-playbook spectorious.yml -i inventory.ini --check -e "host=spectorious clickhouse_server=${params.CLICKHOUSE_SERVER} clickhouse_password=${params.CLICKHOUSE_PASSWORD} mongodb_server=${params.MONGODB_SERVER} mongodb_password=${params.MONGODB_PASSWORD} mpop_mongodb_server=${params.MPOP_MONGODB_SERVER} mpop_mongodb_password=${params.MPOP_MONGODB_PASSWORD} branch=${params.BRANCH}" """
                     } else {
                         echo "Running Ansible playbook normally..."
-                        sh """ansible-playbook ansible/playbooks/torik.yaml -i ansible/inventory.yaml -e "host=torik-lab clickhouse_server=${params.CLICKHOUSE_SERVER} clickhouse_password=${params.CLICKHOUSE_PASSWORD} mongodb_server=${params.MONGODB_SERVER} mongodb_password=${params.MONGODB_PASSWORD} mpop_mongodb_server=${params.MPOP_MONGODB_SERVER} mpop_mongodb_password=${params.MPOP_MONGODB_PASSWORD} branch=${params.BRANCH}" """
+                        sh """ansible-playbook spectorious.yml -i inventory.ini -e "host=spectorious clickhouse_server=${params.CLICKHOUSE_SERVER} clickhouse_password=${params.CLICKHOUSE_PASSWORD} mongodb_server=${params.MONGODB_SERVER} mongodb_password=${params.MONGODB_PASSWORD} mpop_mongodb_server=${params.MPOP_MONGODB_SERVER} mpop_mongodb_password=${params.MPOP_MONGODB_PASSWORD} branch=${params.BRANCH}" """
 
                     }
                 }
@@ -59,4 +59,5 @@ pipeline {
 
 
 }
+
 
